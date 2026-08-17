@@ -2,9 +2,9 @@
 
 $host = "localhost";
 $user = "root";
-$pass = "";
+$pass = "root";
 $db = "sistema_cadastrar_pratos_fixluc";
-$conexao = new mysqli($host,$user,$pass,$db, 6608);
+$conexao = new mysqli($host,$user,$pass,$db,);
 
 if($conexao->connect_error){
     die("Erro na conexão");
