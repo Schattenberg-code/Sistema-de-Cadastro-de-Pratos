@@ -15,5 +15,5 @@ CREATE TABLE if NOT EXISTS pratos (
     descricao VARCHAR(255),
     categoria VARCHAR(40),
     id_usuario INT,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 );
