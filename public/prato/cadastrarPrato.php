@@ -10,7 +10,7 @@ $categoria = $_POST["categoria"];
 $sql = "INSERT INTO pratos (nome,preco,descricao,categoria) VALUES (?,?,?,?)";
 
 $stmt = $conexao->prepare($sql);
-$stmt->bind_param("siss", $nome,$preco,$descricao,$categoria);
+$stmt->bind_param("sdss", $nome,$preco,$descricao,$categoria);
 $stmt->execute();
 
 header("location: ../../index.php");

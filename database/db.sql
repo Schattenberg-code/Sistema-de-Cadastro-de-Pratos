@@ -11,7 +11,7 @@ CREATE TABLE if NOT EXISTS usuarios (
 CREATE TABLE if NOT EXISTS pratos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(40),
-    preco int,
+    preco DECIMAL(10,2),
     descricao VARCHAR(255),
     categoria VARCHAR(40),
     id_usuario INT,
