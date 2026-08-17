@@ -1,10 +1,10 @@
 <?php
         session_start(); 
 
-        include("infra/conexao.php");
+        include("../../infra/conexao.php");
+        $usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
 
 ?>
-
 
 <html lang="en">
 <head>
@@ -19,16 +19,31 @@
         <div
             class="w-25 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 position-absolute top-50 start-50 translate-middle">
 
-            <form action="public/usuario/cadastrarUsuario.php" method="POST">
-                <p class="h2 pb-3 d-flex justify-content-center">Cadastrar Usuário</p>
+            <form action="public/cadastrarPrato.php" method="POST">
+                <p class="h2 pb-3 d-flex justify-content-center">Inserir prato</p>
                 <div>
-                    <label class="form-label" for="email">Email:</label>
-                    <input class="form-control" type="text" name="email">
-                </div>
-                <div>
-                    <label class="form-label" for="nome">Usuário:</label>
+                    <label class="form-label" for="nome">Nome do Prato:</label>
                     <input class="form-control" type="text" name="nome">
                 </div>
+                <div>
+                    <label class="form-label" for="categoria">Categoria:</label>
+                    <input class="form-control" type="text" name="categoria">
+                </div>
+                <div>
+                    <label class="form-label" for="descricao">Descricao</label>
+                    <input class="form-control" type="text" name="descricao">
+                </div>
+                <div>
+                    <label class="form-label" for="preco">Preço</label>
+                    <input class="form-control" type="number" name="preco">
+                </div>
+                <select name="" id="">
+                     <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
+                    <option value="">
+                        <td><?php echo $usuario["nome"] ?></td>
+                    </option>
+                <?php } ?>
+                </select>
                 <div class="d-grid gap-2 mt-5">
                     <button class="btn btn-primary" type="submit">Cadastrar</button>
                 </div>

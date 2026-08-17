@@ -4,7 +4,7 @@ $host = "localhost";
 $user = "root";
 $pass = "root";
 $db = "sistema_cadastrar_pratos_fixluc";
-$conexao = new mysqli($host,$user,$pass,$db,);
+$conexao = new mysqli($host,$user,$pass,$db);
 
 if($conexao->connect_error){
     die("Erro na conexão");
