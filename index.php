@@ -1,9 +1,7 @@
 <?php
-session_start(); 
+        session_start(); 
 
-include("infra/conexao.php");
-
-
+        include("infra/conexao.php");
 
 ?>
 

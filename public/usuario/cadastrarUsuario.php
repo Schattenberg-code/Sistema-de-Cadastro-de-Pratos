@@ -17,3 +17,4 @@ $stmt->bind_param("ss", $email,$nome);
 $stmt->execute();
 
 header("location: ../../index.php");
+
