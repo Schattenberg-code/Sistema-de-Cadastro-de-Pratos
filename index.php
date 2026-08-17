@@ -1,7 +1,7 @@
 <?php
         session_start(); 
 
-        include("../../infra/conexao.php");
+        include("infra/conexao.php");
         $usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
 
 ?>
@@ -19,7 +19,7 @@
         <div
             class="w-25 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 position-absolute top-50 start-50 translate-middle">
 
-            <form action="public/cadastrarPrato.php" method="POST">
+            <form action="public/prato/cadastrarPrato.php" method="POST">
                 <p class="h2 pb-3 d-flex justify-content-center">Inserir prato</p>
                 <div>
                     <label class="form-label" for="nome">Nome do Prato:</label>
