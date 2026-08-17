@@ -13,6 +13,6 @@ CREATE TABLE if NOT EXISTS pratos (
     preco DECIMAL(10,2) NOT NULL,
     descricao VARCHAR(255),
     categoria VARCHAR(40) NOT NULL,
-    id_usuario INT,
+    id_usuario INT NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 );

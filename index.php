@@ -37,12 +37,12 @@
                     <label class="form-label" for="preco">Preço</label>
                     <input class="form-control" type="number" name="preco">
                 </div>
-                <select name="" id="">
-                     <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
-                    <option value="">
-                        <td><?php echo $usuario["nome"] ?></td>
-                    </option>
-                <?php } ?>
+                <select name="id_usuario" id="">
+                    <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
+                        <option value="<?php echo $usuario["id"]; ?>">
+                            <?php echo $usuario["nome"] ?>
+                        </option>
+                    <?php } ?>
                 </select>
                 <div class="d-grid gap-2 mt-5">
                     <button class="btn btn-primary" type="submit">Cadastrar</button>
