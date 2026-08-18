@@ -30,30 +30,42 @@
                     <input class="form-control" type="text" name="categoria">
                 </div>
                 <div>
-                    <label class="form-label" for="descricao">Descricao</label>
+                    <label class="form-label" for="descricao">Descricão:</label>
                     <input class="form-control" type="text" name="descricao">
                 </div>
                 <div>
-                    <label class="form-label" for="preco">Preço</label>
+                    <label class="form-label" for="preco">Preço:</label>
                     <input class="form-control" type="number" name="preco">
                 </div>
-                <select name="id_usuario" id="">
-                    <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
-                        <option value="<?php echo $usuario["id"]; ?>">
-                            <?php echo $usuario["nome"] ?>
-                        </option>
-                    <?php } ?>
-                </select>
+                <br>
+                <div>
+                    <label class="form-label" for="preco">Selecione o usuário para cadastrar o prato:</label>
+                    <select class="form-select" name="id_usuario" id="">
+                        <option selected>Selecione um usuário</option>
+                        <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
+                            <option value="<?php echo $usuario["id"]; ?>">
+                                <?php echo $usuario["nome"] ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                </div>
+                
                 <div class="d-grid gap-2 mt-5">
                     <button class="btn btn-primary" type="submit">Cadastrar</button>
                 </div>
             </form>
 
+            <div>
+                <h4 class="d-flex justify-content-center">Deseja cadastrar um usuário?</h4>
+                <div class="d-flex justify-content-center">
+                    <button 
+                        class="btn btn-secondary btn-sm" onclick="window.location.href='public/usuario/cadastrar.php'">Cadastrar Usuário
+                    </button>
+                </div>
+            </div>
+
         </div>
     </main>
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

@@ -34,6 +34,15 @@
                 </div>
             </form>
 
+            <div>
+                <h4 class="d-flex justify-content-center">Deseja cadastrar um prato?</h4>
+                <div class="d-flex justify-content-center">
+                    <button 
+                        class="btn btn-secondary btn-sm" onclick="window.location.href='../../index.php'">Voltar
+                    </button>
+                </div>
+            </div>
+
         </div>
     </main>
 
