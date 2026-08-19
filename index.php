@@ -117,7 +117,7 @@ if (isset($_GET["id_usuario"])) {
                 <div class="">
                     <?php if ($pratos->num_rows == 0) { ?>
 
-                        <h1>Esse usuário não possui pratos cadastrados.</h1>
+                        <h2 class="d-flex justify-content-center align-items-center">Esse usuário não possui pratos cadastrados.</h2>
 
                     <?php } else { ?>
                         <h2 class="d-flex justify-content-center">Pratos cadastrados</h2>
