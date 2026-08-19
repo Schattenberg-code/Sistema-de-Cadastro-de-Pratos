@@ -5,9 +5,9 @@ include "../../infra/conexao.php";
 $email = $_POST["email"];
 $nome = $_POST["nome"];
 
-if (!$email){
+if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo "<script>
-        alert('Erro no cadastro: o usuário precisa ter Email');
+        alert('Erro no cadastro: informe um e-mail válido');
         window.location.href = 'cadastrar.php';
     </script>";
     die();
