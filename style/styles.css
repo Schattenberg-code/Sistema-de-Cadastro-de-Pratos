@@ -8,26 +8,29 @@ td, th {
     position: absolute !important;
     top: 50% !important;
     transform: translate(-50%, -50%) !important;
+    height: 740px !important;
 }
 
-#divSegundaria{
-    left: 66% !important;
+#secaoum {
     position: absolute !important;
-    top: 43% !important;
+    left: 66% !important;
+    top: 50% !important; 
     transform: translate(-50%, -50%) !important;
-    height: 580px !important;
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+}
+
+#divSegundaria {
+    margin: 0px !important;
+    margin-bottom: 20px !important;
+    height: 620px !important;
     overflow-y: auto !important;
 }
 
-
-
-#divTerciaria{
-    left: 66% !important;
-    position: absolute !important;
-    top: 83.6% !important;
-    transform: translate(-50%, -50%) !important;
+#divTerciaria {
+    margin: 0px !important;
     height: 100px !important;
-
 }
 
 #botaoAtualizar{
