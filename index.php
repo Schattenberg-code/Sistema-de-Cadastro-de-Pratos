@@ -80,6 +80,7 @@
                             <th>Preço:</th>
                             <th>Descrição:</th>
                             <th>Categoria</th>
+                            <th>Autor</th>
                             <th>Opções</th>
                         </tr>
                         <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
@@ -88,6 +89,12 @@
                                 <td><?php echo $prato["preco"] ?></td>
                                 <td><?php echo $prato["descricao"] ?></td>
                                 <td><?php echo $prato["categoria"] ?></td>
+                                <?php
+
+                                include_once("public/usuario/listarUsuario.php");
+
+                                 ?>
+                                <td><?php echo listarUsuario($prato["id_usuario"])?></td>
                                 <td>
                                     <form action="public/prato/excluirPrato.php" method="POST" onsubmit="return confirm('Deseja excluir este Prato?')">
                                         <input type="hidden" name="id_prato" value = "<?php echo $prato["id"] ?>">

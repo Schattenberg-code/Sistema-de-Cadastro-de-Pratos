@@ -23,7 +23,7 @@
                 <p class="h2 pb-3 d-flex justify-content-center">Cadastrar Usuário</p>
                 <div>
                     <label class="form-label" for="email">Email:</label>
-                    <input class="form-control" type = "email" name="email">
+                    <input class="form-control" type = "text" name="email">
                 </div>
                 <div>
                     <label class="form-label" for="nome">Usuário:</label>
