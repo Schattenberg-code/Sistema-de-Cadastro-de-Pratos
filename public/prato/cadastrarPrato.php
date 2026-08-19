@@ -8,6 +8,9 @@ $descricao = $_POST["descricao"];
 $categoria = $_POST["categoria"];
 $id_usuario = $_POST["id_usuario"];
 
+echo $id_usuario;
+exit;
+
 $sql = "INSERT INTO pratos (nome,preco,descricao,categoria,id_usuario) VALUES (?,?,?,?,?)";
 
 $stmt = $conexao->prepare($sql);

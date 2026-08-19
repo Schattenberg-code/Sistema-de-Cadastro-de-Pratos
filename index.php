@@ -41,8 +41,10 @@
                 <br>
                 <div>
                     <label class="form-label" for="id_usuario">Selecione o usuário para cadastrar o prato:</label>
-                    <select class="form-select" name="id_usuario" id="usuarioSelect">
-                        <option selected>Selecione um usuário</option>
+                    <select class="form-select" name="id_usuario">
+                        <option value="" selected disabled>
+                            Selecione um usuário
+                        </option>
                         <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
                             <option value="<?php echo $usuario["id"]; ?>">
                                 <?php echo $usuario["nome"] ?>
@@ -57,10 +59,11 @@
 
                 <div>
                     <h4 class="d-flex justify-content-center">Deseja cadastrar um usuário?</h4>
+
                     <div class="d-flex justify-content-center">
-                        <button 
-                            class="btn btn-secondary btn-sm" onclick="window.location.href='public/usuario/cadastrar.php'">Cadastrar Usuário
-                        </button>
+                        <a href="public/usuario/cadastrar.php" class="btn btn-secondary btn-sm">
+                            Cadastrar Usuário
+                        </a>
                     </div>
                 </div>
             </form>
@@ -69,9 +72,9 @@
 
         <div id="divSegundaria"
             class=" d-flex justify-content-between w-50 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 translate-middle">
-            <div>
-                <h2>Pratos cadastrados</h2>
-                    <table class="table table-striped">
+            <div class="">
+                <h2 class="d-flex justify-content-center">Pratos cadastrados</h2>
+                    <table class="d-flex justify-content-center table table-striped">
                         <tr>
                             <th>Nome:</th>
                             <th>Preço:</th>
