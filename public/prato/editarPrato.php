@@ -67,12 +67,12 @@ $prato = $resultado->fetch_assoc();
                         <input class="form-control" type="text" name="categoria" value="<?php echo $prato["categoria"] ?>">
                     </div>
 
-                    <div class="d-grid gap-2 mt-5" >
+                    <div class="d-grid gap-2 mt-3" >
                         <button class="btn btn-primary" type="submit" id="botaoAtualizar">Atualizar</button>
                     </div>
                     
                     <div class="d-grid gap-2 mt-5" >
-                        <a href="../../index.php" class=" btn btn-secondary btn-sm">
+                        <a href="../../index.php" class="btn btn-warning">
                             Voltar
                         </a>
                     </div>
