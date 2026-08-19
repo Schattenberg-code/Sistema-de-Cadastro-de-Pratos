@@ -1,20 +1,39 @@
 <?php
-        session_start(); 
+session_start();
 
-        include("infra/conexao.php");
-        $usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
-        $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
+include("infra/conexao.php");
+$usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
+if (isset($_GET["id_usuario"])) {
 
+    $idUsuario = $_GET["id_usuario"];
+
+    $stmt = $conexao->prepare(
+        "SELECT * FROM pratos WHERE id_usuario = ?"
+    );
+
+    $stmt->bind_param("i", $idUsuario);
+    $stmt->execute();
+
+    $pratos = $stmt->get_result();
+
+} else {
+
+    $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
+
+}
 ?>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Prato</title>
     <link rel="stylesheet" href="style/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
+
 <body>
     <main>
         <div id="divPrincipal"
@@ -58,7 +77,7 @@
                 </div>
 
                 <div>
-                    <div class="d-grid gap-2 mt-5" >
+                    <div class="d-grid gap-2 mt-5">
                         <h4 class="d-flex justify-content-center">Deseja cadastrar um usuário?</h4>
                         <a href="public/usuario/cadastrar.php" class="btn btn-warning">
                             Cadastrar Usuário
@@ -66,63 +85,91 @@
                     </div>
                 </div>
             </form>
-                
+
         </div>
 
         <div>
             <div id="divSegundaria"
-            class=" w-50 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 translate-middle">
+                class=" w-50 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 translate-middle">
                 <div class="">
                     <h2 class="d-flex justify-content-center">Pratos cadastrados</h2>
-                        <table id="tabelaPratos" class="d-flex justify-content-center table table-striped-columns">
-                            <tr class="table-active">
-                                <th >Nome:</th>
-                                <th >Preço:</th>
-                                <th >Descrição:</th>
-                                <th >Categoria:</th>
-                                <th >Autor:</th>
-                                <th >Opções</th>
+                    <table id="tabelaPratos" class="d-flex justify-content-center table table-striped-columns">
+                        <tr class="table-active">
+                            <th>Nome:</th>
+                            <th>Preço:</th>
+                            <th>Descrição:</th>
+                            <th>Categoria:</th>
+                            <th>Autor:</th>
+                            <th>Opções</th>
+                        </tr>
+                        <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
+                            <tr>
+                                <td><?php echo $prato["nome"] ?></td>
+                                <td><?php echo $prato["preco"] ?></td>
+                                <td><?php echo $prato["descricao"] ?></td>
+                                <td><?php echo $prato["categoria"] ?></td>
+                                <?php
+
+                                include_once("public/usuario/listarUsuario.php");
+
+                                ?>
+                                <td><?php echo listarUsuario($prato["id_usuario"]) ?></td>
+                                <td>
+                                    <form class="d-flex justify-content-center" action="public/prato/editarPrato.php"
+                                        method="POST">
+                                        <input type="hidden" name="id_prato" value="<?php echo $prato["id"] ?>">
+                                        <button class="btn btn-success" type="submit">Editar</button>
+                                    </form>
+                                    <form class="d-flex justify-content-center" action="public/prato/excluirPrato.php"
+                                        method="POST" onsubmit="return confirm('Deseja excluir este Prato?')">
+                                        <input type="hidden" name="id_prato" value="<?php echo $prato["id"] ?>">
+                                        <button class="btn btn-danger" type="submit">Excluir</button>
+                                    </form>
+                                </td>
                             </tr>
-                            <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
-                                <tr>
-                                    <td><?php echo $prato["nome"] ?></td>
-                                    <td><?php echo $prato["preco"] ?></td>
-                                    <td><?php echo $prato["descricao"] ?></td>
-                                    <td><?php echo $prato["categoria"] ?></td>
-                                    <?php
-
-                                    include_once("public/usuario/listarUsuario.php");
-
-                                    ?>
-                                    <td><?php echo listarUsuario($prato["id_usuario"])?></td>
-                                    <td>
-                                        <form class="d-flex justify-content-center" action="public/prato/editarPrato.php" method="POST">
-                                            <input type="hidden" name="id_prato" value = "<?php echo $prato["id"] ?>">
-                                            <button class="btn btn-success" type = "submit">Editar</button>
-                                        </form>
-                                        <form class="d-flex justify-content-center" action="public/prato/excluirPrato.php" method="POST" onsubmit="return confirm('Deseja excluir este Prato?')">
-                                            <input type="hidden" name="id_prato" value = "<?php echo $prato["id"] ?>">
-                                            <button class="btn btn-danger" type = "submit">Excluir</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </table>
+                        <?php } ?>
+                    </table>
                 </div>
             </div>
 
-            <div id="divTerciaria"
-            class=" w-50 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 translate-middle">
-    oii
-            </div>
+            <form action = "index.php" method="GET">
+                <div id="divTerciaria"
+                    class=" w-50 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 translate-middle">
+                    <select class="form-select" name="id_usuario">
+                        <option value="" selected disabled>
+                            Selecione um usuário
+                        </option>
+                        <?php
+                        $usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
+                        ?>
+                        <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
+                            <option value="<?php echo $usuario["id"]; ?>">
+                                <?php echo $usuario["nome"] ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                    <div class="d-grid gap-2 mt-3">
+                    <button class="btn btn-primary" type="submit">Filtrar</button>
+                </div>
+               
+                </div>
+            </form>
+             <div class="d-grid gap-2 mt-3">
+                    <button class="btn btn-primary" type="submit">Retirar Filtro</button>
+                </div>
+
+
         </div>
-        
+
 
 
 
 
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
