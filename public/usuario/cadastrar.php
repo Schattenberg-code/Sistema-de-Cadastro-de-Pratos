@@ -29,19 +29,19 @@
                     <label class="form-label" for="nome">Usuário:</label>
                     <input class="form-control" type="text" name="nome">
                 </div>
-                <div class="d-grid gap-2 mt-5">
+                <div class="d-grid gap-2 mt-3">
                     <button class="btn btn-primary" type="submit">Cadastrar</button>
                 </div>
             </form>
 
             <div>
-                <h4 class="d-flex justify-content-center">Deseja cadastrar um prato?</h4>
-                <div class="d-flex justify-content-center">
-                    <a href="../../index.php" class="btn btn-secondary btn-sm">
+                <div class="d-grid gap-2 mt-5" >
+                    <h4 class="d-flex justify-content-center">Deseja Voltar?</h4>
+                        <a href="../../index.php" class="btn btn-warning">
                             Voltar
                         </a>
+                    </div>
                 </div>
-            </div>
 
         </div>
     </main>

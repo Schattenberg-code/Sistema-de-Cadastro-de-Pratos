@@ -20,3 +20,7 @@ td, th {
 #botaoAtualizar{
     margin-top: 5px;
 }
+
+#tabelaPratos{
+    border-radius: 10px !important;
+}

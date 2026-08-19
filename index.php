@@ -53,15 +53,14 @@
                     </select>
                 </div>
 
-                <div class="d-grid gap-2 mt-5">
+                <div class="d-grid gap-2 mt-3">
                     <button class="btn btn-primary" type="submit">Cadastrar</button>
                 </div>
 
                 <div>
-                    <h4 class="d-flex justify-content-center">Deseja cadastrar um usuário?</h4>
-
-                    <div class="d-flex justify-content-center">
-                        <a href="public/usuario/cadastrar.php" class="btn btn-secondary btn-sm">
+                    <div class="d-grid gap-2 mt-5" >
+                        <h4 class="d-flex justify-content-center">Deseja cadastrar um usuário?</h4>
+                        <a href="public/usuario/cadastrar.php" class="btn btn-warning">
                             Cadastrar Usuário
                         </a>
                     </div>
@@ -74,7 +73,7 @@
             class=" w-50 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 translate-middle">
             <div class="">
                 <h2 class="d-flex justify-content-center">Pratos cadastrados</h2>
-                    <table class="d-flex justify-content-center table table-striped-columns">
+                    <table id="tabelaPratos" class="d-flex justify-content-center table table-striped-columns">
                         <tr class="table-active">
                             <th >Nome:</th>
                             <th >Preço:</th>
