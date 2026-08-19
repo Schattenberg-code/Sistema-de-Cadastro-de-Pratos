@@ -89,9 +89,8 @@ if (isset($_GET["id_usuario"])) {
         </div>
 
         <div id="secaoUm">
-            <form action="index.php" method="GET">
-                <div id="divTerciaria"
-                    class="container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3">
+             <form action="index.php" method="GET">
+                <div id="divTerciaria" class="container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3">
                     <select class="form-select" name="id_usuario">
                         <option value="" selected disabled>
                             Selecione um usuário
@@ -109,7 +108,7 @@ if (isset($_GET["id_usuario"])) {
                         <button class="btn btn-primary" type="submit">Filtrar</button>
                     </div>
                     <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="submit">Retirar Filtro</button>
+                        <a class="btn btn-primary" href="index.php">Retirar Filtro</a>
                     </div>
                 </div>
             </form>
