@@ -6,7 +6,7 @@ $nome = $_POST["nome"];
 $preco = $_POST["preco"];
 $descricao = $_POST["descricao"];
 $categoria = $_POST["categoria"];
-$id_usuario = $_POST["usuario"];
+$id_usuario = $_POST["id_usuario"];
 
 $sql = "INSERT INTO pratos (nome,preco,descricao,categoria,id_usuario) VALUES (?,?,?,?,?)";
 

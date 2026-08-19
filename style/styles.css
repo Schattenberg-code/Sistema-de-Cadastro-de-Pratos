@@ -1,0 +1,18 @@
+td, th {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+#divPrincipal {
+    left: 30% !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+#divSegundaria{
+    left: 70% !important;
+    position: absolute !important;
+    top: 29% !important;
+    transform: translate(-50%, -50%) !important;
+}
