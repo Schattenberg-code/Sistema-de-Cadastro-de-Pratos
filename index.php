@@ -87,6 +87,12 @@
                                 <td><?php echo $prato["preco"] ?></td>
                                 <td><?php echo $prato["descricao"] ?></td>
                                 <td><?php echo $prato["categoria"] ?></td>
+                                <?php
+
+                                include_once("public/usuario/listarUsuario.php");
+
+                                 ?>
+                                <td><?php echo listarUsuario($prato["id_usuario"])?></td>
                                 <td>
                                     <form class="d-flex justify-content-center" action="public/prato/editarPrato.php" method="POST">
                                         <input type="hidden" name="id_prato" value = "<?php echo $prato["id"] ?>">
