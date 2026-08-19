@@ -129,7 +129,7 @@ if ($filtrando) {
 
                     <?php }else if($pratos->num_rows == 0){ ?>
 
-                        <h1>Não há pratos cadastrados</h1>
+                        <h2 class="d-flex justify-content-center align-items-center">Não há pratos cadastrados</h2>
                     
                     <?php } else { ?>
                         <h2 class="d-flex justify-content-center">Pratos cadastrados</h2>
