@@ -17,11 +17,9 @@ if (isset($_GET["id_usuario"])) {
     $stmt->execute();
 
     $pratos = $stmt->get_result();
-
 } else {
 
     $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
-
 }
 ?>
 
@@ -91,7 +89,32 @@ if (isset($_GET["id_usuario"])) {
         </div>
 
         <div id="secaoUm">
-            <div id="divSegundaria" class="container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3">
+            <form action="index.php" method="GET">
+                <div id="divTerciaria"
+                    class="container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3">
+                    <select class="form-select" name="id_usuario">
+                        <option value="" selected disabled>
+                            Selecione um usuário
+                        </option>
+                        <?php
+                        $usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
+                        ?>
+                        <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
+                            <option value="<?php echo $usuario["id"] + $cript; ?>">
+                                <?php echo $usuario["nome"] ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-primary" type="submit">Filtrar</button>
+                    </div>
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-primary" type="submit">Retirar Filtro</button>
+                    </div>
+                </div>
+            </form>
+            <div id="divSegundaria"
+                class="container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3">
                 <div class="">
                     <?php if ($pratos->num_rows == 0) { ?>
 
@@ -139,31 +162,6 @@ if (isset($_GET["id_usuario"])) {
                     <?php } ?>
                 </div>
             </div>
-
-            <form action="index.php" method="GET">
-                <div id="divTerciaria" class="container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3">
-                    <select class="form-select" name="id_usuario">
-                        <option value="" selected disabled>
-                            Selecione um usuário
-                        </option>
-                        <?php
-                        $usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
-                        ?>
-                    <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
-                            <option value="<?php echo $usuario["id"] + $cript; ?>">
-                                <?php echo $usuario["nome"] ?>
-                                </option>
-                        <?php } ?>
-                    </select>
-                    <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="submit">Filtrar</button>
-                    </div>
-                    <div class="d-grid gap-2 mt-3">
-                        <a href="index.php">Retirar Filtro</a>
-                    </div>
-                </div>
-            </form>
-
 
 
         </div>
