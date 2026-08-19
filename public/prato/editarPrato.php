@@ -39,42 +39,46 @@ $prato = $resultado->fetch_assoc();
 
 <body>
     <header>
-        <h1>Editar Pratos</h1>
+      
     </header>
     <main>
-        <div class="w-25 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 ">
+        <div
+            class="w-50 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 position-absolute top-50 start-50 translate-middle">
 
+            <div>
+                <form action="atualizarPrato.php" method="POST">
+                    <p class="h2 pb-3 d-flex justify-content-center" >Editando o prato: <?php echo $prato["nome"] ?>!</p>
 
-            <h2>Editando o prato <?php echo $prato["nome"] ?>!</h2>
-            <form action="atualizarPrato.php" method="POST">
-                <input type="hidden" name="id" value="<?php echo $prato["id"] ?>">
-                <div>
-                    <label for="nome">Nome:</label>
-                    <br>
-                    <input type="text" name="nome" value="<?php echo $prato["nome"] ?>">
-                </div>
+                    <input type="hidden" name="id" value="<?php echo $prato["id"] ?>">
+                    <div>
+                        <label class="form-label" for="nome">Nome:</label>
+                        <input class="form-control" type="text" name="nome" value="<?php echo $prato["nome"] ?>">
+                    </div>
+                    <div>
+                        <label class="form-label" for="preco">Preço:</label>
+                        <input class="form-control" type="text" name="preco" value="<?php echo $prato["preco"] ?>">
+                    </div>
+                    <div>
+                        <label class="form-label" for="descricao">Descrição:</label>
+                        <textarea class="form-control" name="descricao" rows="4"><?php echo $prato["descricao"] ?></textarea>
+                    </div>
+                    <div>
+                        <label class="form-label" for="categoria">Categoria:</label>
+                        <input class="form-control" type="text" name="categoria" value="<?php echo $prato["categoria"] ?>">
+                    </div>
 
-                <div>
-                    <label for="preco">Preço:</label>
-                    <br>
-                    <input type="text" name="preco" value="<?php echo $prato["preco"] ?>">
-                </div>
-
-                <div>
-                    <label for="descricao">Descrição:</label>
-                    <br>
-                    <textarea name="descricao" rows="4"><?php echo $prato["descricao"] ?></textarea>
-                </div>
-
-                <div>
-                    <label for="categoria">Categoria:</label>
-                    <br>
-                    <input type="text" name="categoria" value="<?php echo $prato["categoria"] ?>">
-                </div>
-
-
-                <button type="submit" id="botaoAtualizar">Atualizar</button>
-            </form>
+                    <div class="d-grid gap-2 mt-5" >
+                        <button class="btn btn-primary" type="submit" id="botaoAtualizar">Atualizar</button>
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-5" >
+                        <a href="../../index.php" class=" btn btn-secondary btn-sm">
+                            Voltar
+                        </a>
+                    </div>
+                </form>
+            </div>
+            
         </div>
     </main>
     <footer>
