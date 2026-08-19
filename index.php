@@ -80,6 +80,7 @@
                                 <th >Preço:</th>
                                 <th >Descrição:</th>
                                 <th >Categoria:</th>
+                                <th >Autor:</th>
                                 <th >Opções</th>
                             </tr>
                             <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
