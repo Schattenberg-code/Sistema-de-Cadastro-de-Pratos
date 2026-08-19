@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro de Prato</title>
     <link rel="stylesheet" href="style/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
@@ -39,8 +39,8 @@
                 </div>
                 <br>
                 <div>
-                    <label class="form-label" for="preco">Selecione o usuário para cadastrar o prato:</label>
-                    <select class="form-select" name="id_usuario" id="">
+                    <label class="form-label" for="id_usuario">Selecione o usuário para cadastrar o prato:</label>
+                    <select class="form-select" name="id_usuario" id="usuarioSelect">
                         <option selected>Selecione um usuário</option>
                         <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
                             <option value="<?php echo $usuario["id"]; ?>">
