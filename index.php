@@ -51,6 +51,19 @@
                     </select>
                 </div>
 
+                <div class="d-grid gap-2 mt-5">
+                    <button class="btn btn-primary" type="submit">Cadastrar</button>
+                </div>
+
+                <div>
+                    <h4 class="d-flex justify-content-center">Deseja cadastrar um usuário?</h4>
+                    <div class="d-flex justify-content-center">
+                        <button 
+                            class="btn btn-secondary btn-sm" onclick="window.location.href='public/usuario/cadastrar.php'">Cadastrar Usuário
+                        </button>
+                    </div>
+                </div>
+            </form>
                 
         </div>
 
