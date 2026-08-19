@@ -4,16 +4,16 @@ td, th {
 }
 
 #divPrincipal {
-    left: 30% !important;
+    left: 24% !important;
     position: absolute !important;
     top: 50% !important;
     transform: translate(-50%, -50%) !important;
 }
 
 #divSegundaria{
-    left: 70% !important;
+    left: 66% !important;
     position: absolute !important;
-    top: 29% !important;
+    top: 50% !important;
     transform: translate(-50%, -50%) !important;
 }
 
