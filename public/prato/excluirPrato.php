@@ -6,8 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
     exit;
 }
 
-if (isset($_POST["id"]) && filter_var($_POST["id"], FILTER_VALIDATE_INT) !== false) {
-    $id = $_POST["id"];
+if (isset($_POST["id_prato"]) && filter_var($_POST["id_prato"], FILTER_VALIDATE_INT) !== false) {
+    $id = $_POST["id_prato"];
 
     $sql = "DELETE FROM pratos WHERE id = ?";
 
