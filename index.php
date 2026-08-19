@@ -88,9 +88,13 @@ if (isset($_GET["id_usuario"])) {
 
         </div>
 
-        <div>
+        <div id="secaoUm">
             <div id="divSegundaria"
+<<<<<<< HEAD
                 class=" w-50 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 translate-middle">
+=======
+            class="container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3">
+>>>>>>> 3f738d8b459ca50fa829000819b3efe4af5d0c9d
                 <div class="">
                     <h2 class="d-flex justify-content-center">Pratos cadastrados</h2>
                     <table id="tabelaPratos" class="d-flex justify-content-center table table-striped-columns">
