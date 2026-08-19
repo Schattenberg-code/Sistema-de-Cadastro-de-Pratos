@@ -86,8 +86,8 @@
                                 <td><?php echo $prato["descricao"] ?></td>
                                 <td><?php echo $prato["categoria"] ?></td>
                                 <td>
-                                    <a href="public/editar.php?id=<?php echo $prato["id"] ?>">Editar</a>
-                                    <a href="public/excluir.php?id=<?php echo $prato["id"] ?>">Excluir</a>
+                                    <a href="public/prato/editarPrato.php?id=<?php echo $prato["id"] ?>">Editar</a>
+                                    <a href="public/prato/excluirPrato.php?id<?php echo $prato["id"] ?>">Excluir</a>
                                 </td>
                             </tr>
                         <?php } ?>
