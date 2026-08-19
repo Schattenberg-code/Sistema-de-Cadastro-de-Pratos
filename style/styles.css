@@ -13,8 +13,18 @@ td, th {
 #divSegundaria{
     left: 66% !important;
     position: absolute !important;
-    top: 50% !important;
+    top: 43% !important;
     transform: translate(-50%, -50%) !important;
+    height: 580px !important;
+}
+
+#divTerciaria{
+    left: 66% !important;
+    position: absolute !important;
+    top: 83.6% !important;
+    transform: translate(-50%, -50%) !important;
+    height: 100px !important;
+
 }
 
 #botaoAtualizar{

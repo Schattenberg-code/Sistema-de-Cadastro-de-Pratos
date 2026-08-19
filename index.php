@@ -69,45 +69,53 @@
                 
         </div>
 
-        <div id="divSegundaria"
+        <div>
+            <div id="divSegundaria"
             class=" w-50 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 translate-middle">
-            <div class="">
-                <h2 class="d-flex justify-content-center">Pratos cadastrados</h2>
-                    <table id="tabelaPratos" class="d-flex justify-content-center table table-striped-columns">
-                        <tr class="table-active">
-                            <th >Nome:</th>
-                            <th >Preço:</th>
-                            <th >Descrição:</th>
-                            <th >Categoria:</th>
-                            <th >Opções</th>
-                        </tr>
-                        <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
-                            <tr>
-                                <td><?php echo $prato["nome"] ?></td>
-                                <td><?php echo $prato["preco"] ?></td>
-                                <td><?php echo $prato["descricao"] ?></td>
-                                <td><?php echo $prato["categoria"] ?></td>
-                                <?php
-
-                                include_once("public/usuario/listarUsuario.php");
-
-                                 ?>
-                                <td><?php echo listarUsuario($prato["id_usuario"])?></td>
-                                <td>
-                                    <form class="d-flex justify-content-center" action="public/prato/editarPrato.php" method="POST">
-                                        <input type="hidden" name="id_prato" value = "<?php echo $prato["id"] ?>">
-                                        <button class="btn btn-success" type = "submit">Editar</button>
-                                    </form>
-                                    <form class="d-flex justify-content-center" action="public/prato/excluirPrato.php" method="POST" onsubmit="return confirm('Deseja excluir este Prato?')">
-                                        <input type="hidden" name="id_prato" value = "<?php echo $prato["id"] ?>">
-                                        <button class="btn btn-danger" type = "submit">Excluir</button>
-                                    </form>
-                                </td>
+                <div class="">
+                    <h2 class="d-flex justify-content-center">Pratos cadastrados</h2>
+                        <table id="tabelaPratos" class="d-flex justify-content-center table table-striped-columns">
+                            <tr class="table-active">
+                                <th >Nome:</th>
+                                <th >Preço:</th>
+                                <th >Descrição:</th>
+                                <th >Categoria:</th>
+                                <th >Opções</th>
                             </tr>
-                        <?php } ?>
-                    </table>
+                            <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
+                                <tr>
+                                    <td><?php echo $prato["nome"] ?></td>
+                                    <td><?php echo $prato["preco"] ?></td>
+                                    <td><?php echo $prato["descricao"] ?></td>
+                                    <td><?php echo $prato["categoria"] ?></td>
+                                    <?php
+
+                                    include_once("public/usuario/listarUsuario.php");
+
+                                    ?>
+                                    <td><?php echo listarUsuario($prato["id_usuario"])?></td>
+                                    <td>
+                                        <form class="d-flex justify-content-center" action="public/prato/editarPrato.php" method="POST">
+                                            <input type="hidden" name="id_prato" value = "<?php echo $prato["id"] ?>">
+                                            <button class="btn btn-success" type = "submit">Editar</button>
+                                        </form>
+                                        <form class="d-flex justify-content-center" action="public/prato/excluirPrato.php" method="POST" onsubmit="return confirm('Deseja excluir este Prato?')">
+                                            <input type="hidden" name="id_prato" value = "<?php echo $prato["id"] ?>">
+                                            <button class="btn btn-danger" type = "submit">Excluir</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </table>
+                </div>
+            </div>
+
+            <div id="divTerciaria"
+            class=" w-50 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 translate-middle">
+    oii
             </div>
         </div>
+        
 
 
 
