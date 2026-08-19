@@ -93,43 +93,50 @@ if (isset($_GET["id_usuario"])) {
         <div id="secaoUm">
             <div id="divSegundaria" class="container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3">
                 <div class="">
-                    <h2 class="d-flex justify-content-center">Pratos cadastrados</h2>
-                    <table id="tabelaPratos" class="d-flex justify-content-center table table-striped-columns">
-                        <tr class="table-active">
-                            <th>Nome:</th>
-                            <th>Preço:</th>
-                            <th>Descrição:</th>
-                            <th>Categoria:</th>
-                            <th>Autor:</th>
-                            <th>Opções</th>
-                        </tr>
-                        <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
-                            <tr>
-                                <td><?php echo $prato["nome"] ?></td>
-                                <td><?php echo $prato["preco"] ?></td>
-                                <td><?php echo $prato["descricao"] ?></td>
-                                <td><?php echo $prato["categoria"] ?></td>
-                                <?php
+                    <?php if ($pratos->num_rows == 0) { ?>
 
-                                include_once("public/usuario/listarUsuario.php");
+                        <h1>Esse usuário não possui pratos cadastrados.</h1>
 
-                                ?>
-                                <td><?php echo listarUsuario($prato["id_usuario"]) ?></td>
-                                <td>
-                                    <form class="d-flex justify-content-center" action="public/prato/editarPrato.php"
-                                        method="POST">
-                                        <input type="hidden" name="id_prato" value="<?php echo $prato["id"] ?>">
-                                        <button class="btn btn-success" type="submit">Editar</button>
-                                    </form>
-                                    <form class="d-flex justify-content-center" action="public/prato/excluirPrato.php"
-                                        method="POST" onsubmit="return confirm('Deseja excluir este Prato?')">
-                                        <input type="hidden" name="id_prato" value="<?php echo $prato["id"] ?>">
-                                        <button class="btn btn-danger" type="submit">Excluir</button>
-                                    </form>
-                                </td>
+                    <?php } else { ?>
+                        <h2 class="d-flex justify-content-center">Pratos cadastrados</h2>
+                        <table id="tabelaPratos" class="d-flex justify-content-center table table-striped-columns">
+                            <tr class="table-active">
+                                <th>Nome:</th>
+                                <th>Preço:</th>
+                                <th>Descrição:</th>
+                                <th>Categoria:</th>
+                                <th>Autor:</th>
+                                <th>Opções</th>
                             </tr>
-                        <?php } ?>
-                    </table>
+                            <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
+                                <tr>
+                                    <td><?php echo $prato["nome"] ?></td>
+                                    <td><?php echo $prato["preco"] ?></td>
+                                    <td><?php echo $prato["descricao"] ?></td>
+                                    <td><?php echo $prato["categoria"] ?></td>
+                                    <?php
+
+                                    include_once("public/usuario/listarUsuario.php");
+
+                                    ?>
+                                    <td><?php echo listarUsuario($prato["id_usuario"]) ?></td>
+                                    <td>
+                                        <form class="d-flex justify-content-center" action="public/prato/editarPrato.php"
+                                            method="POST">
+                                            <input type="hidden" name="id_prato" value="<?php echo $prato["id"] ?>">
+                                            <button class="btn btn-success" type="submit">Editar</button>
+                                        </form>
+                                        <form class="d-flex justify-content-center" action="public/prato/excluirPrato.php"
+                                            method="POST" onsubmit="return confirm('Deseja excluir este Prato?')">
+                                            <input type="hidden" name="id_prato" value="<?php echo $prato["id"] ?>">
+                                            <button class="btn btn-danger" type="submit">Excluir</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+
+                        </table>
+                    <?php } ?>
                 </div>
             </div>
 
@@ -142,10 +149,10 @@ if (isset($_GET["id_usuario"])) {
                         <?php
                         $usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
                         ?>
-                        <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
+                    <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
                             <option value="<?php echo $usuario["id"] + $cript; ?>">
                                 <?php echo $usuario["nome"] ?>
-                            </option>
+                                </option>
                         <?php } ?>
                     </select>
                     <div class="d-grid gap-2 mt-3">
