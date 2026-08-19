@@ -16,3 +16,7 @@ td, th {
     top: 29% !important;
     transform: translate(-50%, -50%) !important;
 }
+
+#botaoAtualizar{
+    margin-top: 5px;
+}

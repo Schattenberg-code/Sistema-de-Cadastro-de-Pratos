@@ -90,7 +90,10 @@
                                         <input type="hidden" name="id_prato" value = "<?php echo $prato["id"] ?>">
                                         <button type = "submit">Excluir</button>
                                     </form>
-                                    <a href="public/excluir.php?id=<?php echo $prato["id"] ?>">Excluir</a>
+                                    <form action="public/prato/editarPrato.php" method="POST">
+                                        <input type="hidden" name="id_prato" value = "<?php echo $prato["id"] ?>">
+                                        <button type = "submit">Editar</button>
+                                    </form>
                                 </td>
                             </tr>
                         <?php } ?>

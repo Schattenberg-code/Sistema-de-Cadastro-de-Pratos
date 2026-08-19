@@ -7,8 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
     exit;
 }
 
-if (isset($_POST["id"]) && filter_var($_POST["id"], FILTER_VALIDATE_INT) !== false) {
-    $id = $_POST["id"];
+if (isset($_POST["id_prato"]) && filter_var($_POST["id_prato"], FILTER_VALIDATE_INT) !== false) {
+    $id = $_POST["id_prato"];
 
     $sql = "SELECT * FROM pratos WHERE id=?";
 
@@ -18,8 +18,8 @@ if (isset($_POST["id"]) && filter_var($_POST["id"], FILTER_VALIDATE_INT) !== fal
     $stmt->execute();
 }
 
-$resultado = $stmt-> get_result();
-$prato = $resultado-> fetch_assoc();
+$resultado = $stmt->get_result();
+$prato = $resultado->fetch_assoc();
 
 ?>
 
@@ -31,7 +31,10 @@ $prato = $resultado-> fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Pratos</title>
-    <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" href="../../style/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -39,25 +42,40 @@ $prato = $resultado-> fetch_assoc();
         <h1>Editar Pratos</h1>
     </header>
     <main>
-        <h2>Editando o prato <?php echo $prato["nome"]?>!</h2>
-        <form action="atualizarPrato.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $prato["id"]?>">
+        <div class="w-25 p-5 pb-4 pt-5 container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3 ">
 
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome" value="<?php echo $prato["nome"]?>">
-            <br>
-            <label for="preco">Preço:</label>
-            <input type="text" name="preco" value="<?php echo $prato["preco"]?>">
-            <br>
-            <label for="descricao">Descrição:</label>
-            <input type="number" name="descricao" value="<?php echo $prato["descricao"]?>">
-            <br>
-            <label for="categoria">Categoria:</label>
-            <input type="number" name="categoria" value="<?php echo $prato["categoria"]?>">
-            <br>
-            <button type="submit">Atualizar</button>
-        </form>
 
+            <h2>Editando o prato <?php echo $prato["nome"] ?>!</h2>
+            <form action="atualizarPrato.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo $prato["id"] ?>">
+                <div>
+                    <label for="nome">Nome:</label>
+                    <br>
+                    <input type="text" name="nome" value="<?php echo $prato["nome"] ?>">
+                </div>
+
+                <div>
+                    <label for="preco">Preço:</label>
+                    <br>
+                    <input type="text" name="preco" value="<?php echo $prato["preco"] ?>">
+                </div>
+
+                <div>
+                    <label for="descricao">Descrição:</label>
+                    <br>
+                    <textarea name="descricao" rows="4"><?php echo $prato["descricao"] ?></textarea>
+                </div>
+
+                <div>
+                    <label for="categoria">Categoria:</label>
+                    <br>
+                    <input type="text" name="categoria" value="<?php echo $prato["categoria"] ?>">
+                </div>
+
+
+                <button type="submit" id="botaoAtualizar">Atualizar</button>
+            </form>
+        </div>
     </main>
     <footer>
 
