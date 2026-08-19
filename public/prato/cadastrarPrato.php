@@ -4,12 +4,15 @@ include "../../infra/conexao.php";
 
 $nome = $_POST["nome"];
 $preco = $_POST["preco"];
+
+if ($preco < 0){
+    header("Location: ../../index.php");
+    exit;
+}
+
 $descricao = $_POST["descricao"];
 $categoria = $_POST["categoria"];
 $id_usuario = $_POST["id_usuario"];
-
-echo $id_usuario;
-exit;
 
 $sql = "INSERT INTO pratos (nome,preco,descricao,categoria,id_usuario) VALUES (?,?,?,?,?)";
 

@@ -36,7 +36,7 @@
                 </div>
                 <div>
                     <label class="form-label" for="preco">Preço:</label>
-                    <input class="form-control" type="number" name="preco">
+                    <input class="form-control" type="number" step="0.01" min="0" name="preco">
                 </div>
                 <br>
                 <div>
