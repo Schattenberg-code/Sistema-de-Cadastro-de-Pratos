@@ -86,8 +86,11 @@
                                 <td><?php echo $prato["descricao"] ?></td>
                                 <td><?php echo $prato["categoria"] ?></td>
                                 <td>
-                                    <a href="public/prato/editarPrato.php?id=<?php echo $prato["id"] ?>">Editar</a>
-                                    <a href="public/prato/excluirPrato.php?id<?php echo $prato["id"] ?>">Excluir</a>
+                                    <form action="public/prato/excluirPrato.php" method="POST" onsubmit="return confirm('Deseja excluir este Prato?')">
+                                        <input type="hidden" name="id_prato" value = "<?php echo $prato["id"] ?>">
+                                        <button type = "submit">Excluir</button>
+                                    </form>
+                                    <a href="public/excluir.php?id=<?php echo $prato["id"] ?>">Excluir</a>
                                 </td>
                             </tr>
                         <?php } ?>
