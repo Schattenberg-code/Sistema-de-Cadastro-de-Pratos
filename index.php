@@ -3,9 +3,12 @@ session_start();
 
 $cript = 8512;
 
+$temPrato = false;
+
 include("infra/conexao.php");
 $usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
-if (isset($_GET["id_usuario"])) {
+$filtrando = isset($_GET["id_usuario"]);
+if ($filtrando) {
 
     $idUsuario = $_GET["id_usuario"] - $cript;
 
@@ -18,8 +21,13 @@ if (isset($_GET["id_usuario"])) {
 
     $pratos = $stmt->get_result();
 } else {
-
     $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
+
+     if ($pratos->num_rows == 0) { 
+        $temPrato = false;
+     }else{
+        $temPrato = true;
+     }
 }
 ?>
 
@@ -115,10 +123,14 @@ if (isset($_GET["id_usuario"])) {
             <div id="divSegundaria"
                 class="container-sm shadow-lg p-3 mb-5 bg-body-tertiary rounded rounded-3">
                 <div class="">
-                    <?php if ($pratos->num_rows == 0) { ?>
+                    <?php if ($pratos->num_rows == 0 && $filtrando) { ?>
 
                         <h1>Esse usuário não possui pratos cadastrados.</h1>
 
+                    <?php }else if($pratos->num_rows == 0){ ?>
+
+                        <h1>Não há pratos cadastrados</h1>
+                    
                     <?php } else { ?>
                         <h2 class="d-flex justify-content-center">Pratos cadastrados</h2>
                         <table id="tabelaPratos" class="d-flex justify-content-center table table-striped-columns">
