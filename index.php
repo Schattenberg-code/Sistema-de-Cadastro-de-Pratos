@@ -1,11 +1,13 @@
 <?php
 session_start();
 
+$cript = 8512;
+
 include("infra/conexao.php");
 $usuarios = mysqli_query($conexao, "SELECT * FROM usuarios");
 if (isset($_GET["id_usuario"])) {
 
-    $idUsuario = $_GET["id_usuario"];
+    $idUsuario = $_GET["id_usuario"] - $cript;
 
     $stmt = $conexao->prepare(
         "SELECT * FROM pratos WHERE id_usuario = ?"
